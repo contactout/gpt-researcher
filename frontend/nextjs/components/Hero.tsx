@@ -34,7 +34,7 @@ const Hero: FC<THeroProps> = ({
             </span>
           </h1>
           <h2 className="text-xl font-light text-center px-4 mb-10 text-gray-400">
-            Say Hello to GPT Researcher, your AI mate for rapid insights and comprehensive research
+          Presenting PaperPilot, your AI-powered partner for fast, accurate insights and seamless research.
           </h2>
         </div>
 
@@ -55,13 +55,6 @@ const Hero: FC<THeroProps> = ({
               onClick={() => handleClickSuggestion(item?.name)}
               key={item.id}
             >
-              <Image
-                src={item.icon}
-                alt={item.name}
-                width={18}
-                height={16}
-                className="w-[18px]"
-              />
               <span className="text-sm font-light leading-[normal] text-[#1B1B16]">
                 {item.name}
               </span>
@@ -82,17 +75,17 @@ type suggestionType = {
 const suggestions: suggestionType[] = [
   {
     id: 1,
-    name: "Stock analysis on ",
+    name: "Conduct a literature review on ",
     icon: "/img/stock2.svg",
   },
   {
     id: 2,
-    name: "Help me plan an adventure to ",
+    name: "Suggest research methodology for ",
     icon: "/img/hiker.svg",
   },
   {
     id: 3,
-    name: "What are the latest news on ",
+    name: "Write an abstract on ",
     icon: "/img/news.svg",
   },
 ];
