@@ -1,36 +1,49 @@
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 interface HeaderProps {
-  loading?: boolean;      // Indicates if research is currently in progress
-  isStopped?: boolean;    // Indicates if research was manually stopped
-  showResult?: boolean;   // Controls if research results are being displayed
-  onStop?: () => void;    // Handler for stopping ongoing research
-  onNewResearch?: () => void;  // Handler for starting fresh research
+  loading?: boolean;
+  isStopped?: boolean;
+  showResult?: boolean;
+  onStop?: () => void;
+  onNewResearch?: () => void;
 }
 
 const Header = ({ loading, isStopped, showResult, onStop, onNewResearch }: HeaderProps) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      {/* Original gradient background with blur effect */}
       <div className="absolute inset-0 backdrop-blur-sm bg-gradient-to-b to-transparent"></div>
       
-      {/* Header container */}
-      <div className="container relative h-[60px] px-4 lg:h-[80px] lg:px-0 pt-4 pb-4">
+      <div className={`container relative px-4 lg:px-0 transition-all duration-300 ${
+        isScrolled ? 'h-[50px] pt-2 pb-2' : 'h-[60px] lg:h-[80px] pt-4 pb-4'
+      }`}>
         <div className="flex flex-col items-center">
-          {/* Logo/Home link */}
           <a href="/">
             <Image
-              src="/img/gptr-logo.png"
+              src="/img/PaperPilot-Logo-Black.png"
               alt="logo"
-              width={60}
+              width={300}
               height={60}
-              className="lg:h-16 lg:w-16"
+              className={`transition-all duration-300 transform ${
+                isScrolled ? 'scale-50' : 'lg:h-14'
+              }`}
             />
           </a>
           
-          {/* Action buttons container */}
-          <div className="flex gap-2 mt-2 transition-all duration-300 ease-in-out">
-            {/* Stop button - shown only during active research */}
+          <div className={`flex gap-2 transition-all duration-300 ${
+            isScrolled ? 'mt-1' : 'mt-2'
+          }`}>
             {loading && !isStopped && (
               <button
                 onClick={onStop}
@@ -39,7 +52,6 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch }: Heade
                 Stop
               </button>
             )}
-            {/* New Research button - shown after stopping or completing research */}
             {(isStopped || !loading) && showResult && (
               <button
                 onClick={onNewResearch}
