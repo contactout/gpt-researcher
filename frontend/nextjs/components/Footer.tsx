@@ -21,33 +21,7 @@ const Footer = ({ setChatBoxSettings, chatBoxSettings}: ChatBoxProps) => {
       <div className="container flex min-h-[72px] mt-2 items-center justify-between px-4 pb-3 pt-5 lg:min-h-[72px] lg:px-0 lg:py-5">
         <Modal setChatBoxSettings={setChatBoxSettings} chatBoxSettings={chatBoxSettings} />
         <div className="text-sm text-gray-100">
-            © {new Date().getFullYear()} GPT Researcher. All rights reserved.
-        </div>
-        <div className="flex items-center gap-3">
-          <Link href={"https://github.com/assafelovic/gpt-researcher"} target="_blank">
-            <Image
-              src={"/img/github.svg"}
-              alt="github"
-              width={30}
-              height={30}
-            />{" "}
-          </Link>
-          <Link href={"https://discord.gg/QgZXvJAccX"} target="_blank">
-              <Image
-                src={"/img/discord.svg"}
-                alt="discord"
-                width={30}
-                height={30}
-              />{" "}
-          </Link>
-          <Link href={"https://hub.docker.com/r/gptresearcher/gpt-researcher"} target="_blank">
-              <Image
-                src={"/img/docker.svg"}
-                alt="docker"
-                width={30}
-                height={30}
-              />{" "}
-          </Link>
+            © {new Date().getFullYear()} PaperPilot. All rights reserved.
         </div>
       </div>
       </div>

@@ -21,7 +21,7 @@ const Hero: FC<THeroProps> = ({
     <div>
       <div className="flex flex-col items-center justify-center">
         <div className="landing flex flex-col items-center">
-          <h1 className="text-4xl font-extrabold text-center lg:text-7xl">
+          <h1 className="text-4xl font-extrabold text-center lg:text-7xl text-gray-700">
             Say Goodbye to <br />
             <span
               style={{
@@ -33,7 +33,7 @@ const Hero: FC<THeroProps> = ({
               Hours of Research
             </span>
           </h1>
-          <h2 className="text-xl font-light text-center px-4 mb-10 text-gray-300">
+          <h2 className="text-xl font-light text-center px-4 mb-10 text-gray-400">
             Say Hello to GPT Researcher, your AI mate for rapid insights and comprehensive research
           </h2>
         </div>
