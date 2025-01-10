@@ -1,23 +1,27 @@
+import Image from 'next/image';
 import React, { useEffect } from 'react';
 
 export default function ImageModal({ imageSrc, isOpen, onClose, onNext, onPrev }) {
-    if (!isOpen) return null;
-
     // Set up keyboard event listeners
     useEffect(() => {
+        if (!isOpen) return
+
         const handleKeyDown = (e) => {
             if (e.key === 'ArrowLeft') {
-                onPrev();
+                onPrev()
             } else if (e.key === 'ArrowRight') {
-                onNext();
+                onNext()
             } else if (e.key === 'Escape') {
-                onClose();
+                onClose()
             }
-        };
+        }
 
-        document.addEventListener('keydown', handleKeyDown);
-        return () => document.removeEventListener('keydown', handleKeyDown);
-    }, [onClose, onNext, onPrev]);
+        document.addEventListener('keydown', handleKeyDown)
+        return () => document.removeEventListener('keydown', handleKeyDown)
+    }, [onClose, onNext, onPrev, isOpen])
+
+    // Return null early if modal is not open
+    if (!isOpen) return null
 
     // Swipe detection for mobile
     let touchStartX = 0;
@@ -60,7 +64,7 @@ export default function ImageModal({ imageSrc, isOpen, onClose, onNext, onPrev }
                 >
                     ←
                 </button>
-                <img
+                <Image
                     src={imageSrc}
                     alt="Modal view"
                     className="max-h-[90vh] max-w-[90vw] object-contain"

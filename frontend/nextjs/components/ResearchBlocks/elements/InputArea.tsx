@@ -34,7 +34,8 @@ const InputArea: FC<TInputAreaProps> = ({
   reset,
   isStopped,
 }) => {
-  // Only show input if not stopped
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
   if (isStopped) {
     return null;
   }
@@ -42,8 +43,6 @@ const InputArea: FC<TInputAreaProps> = ({
   const placeholder = handleSecondary
     ? "Any questions about this report?"
     : "What would you like to research next?";
-
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const resetHeight = () => {
     if (textareaRef.current) {

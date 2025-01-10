@@ -203,26 +203,30 @@ export default function Home() {
 
   // Add ResizeObserver to watch for content changes
   useEffect(() => {
+    // Store ref in a variable inside effect
+    const currentMainContent = mainContentRef.current
+    
     const resizeObserver = new ResizeObserver(() => {
-      handleScroll();
-    });
+      handleScroll()
+    })
 
-    if (mainContentRef.current) {
-      resizeObserver.observe(mainContentRef.current);
+    if (currentMainContent) {
+      resizeObserver.observe(currentMainContent)
     }
 
-    window.addEventListener('scroll', handleScroll);
-    window.addEventListener('resize', handleScroll);
+    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleScroll)
     
     return () => {
-      if (mainContentRef.current) {
-        resizeObserver.unobserve(mainContentRef.current);
+      // Use stored ref variable in cleanup
+      if (currentMainContent) {
+        resizeObserver.unobserve(currentMainContent)
       }
-      resizeObserver.disconnect();
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, [handleScroll]);
+      resizeObserver.disconnect()
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
+  }, [handleScroll])
 
   const scrollToBottom = () => {
     window.scrollTo({

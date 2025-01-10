@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import ImageModal from './ImageModal';
 
 export default function ImagesAlbum({ images }) {
@@ -50,10 +51,12 @@ export default function ImagesAlbum({ images }) {
                         key={index} 
                         className="relative aspect-square bg-gray-700 rounded-lg overflow-hidden hover:shadow-lg transition-shadow duration-300"
                     >
-                        <img
+                        <Image
                             src={image}
                             alt={`Image ${index + 1}`}
-                            className="absolute inset-0 w-full h-full object-cover cursor-pointer hover:opacity-90 transition-opacity duration-300"
+                            fill
+                            sizes="(max-width: 768px) 50vw, 25vw"
+                            className="object-cover cursor-pointer hover:opacity-90 transition-opacity duration-300"
                             onClick={() => openModal(image, index)}
                             onError={() => handleImageError(image)}
                         />
