@@ -17,7 +17,7 @@ const Footer = ({ setChatBoxSettings, chatBoxSettings}: ChatBoxProps) => {
   
   return (
     <>
-    <div className="bg-[#151A2D]">
+    <div className="bg-[#151A2D] mt-5">
       <div className="container flex min-h-[72px] mt-2 items-center justify-between px-4 pb-3 pt-5 lg:min-h-[72px] lg:px-0 lg:py-5">
         <Modal setChatBoxSettings={setChatBoxSettings} chatBoxSettings={chatBoxSettings} />
         <div className="text-sm text-gray-100">
