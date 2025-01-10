@@ -13,6 +13,7 @@ interface ChatBoxSettings {
 interface ChatBoxProps {
   chatBoxSettings: ChatBoxSettings;
   setChatBoxSettings: React.Dispatch<React.SetStateAction<ChatBoxSettings>>;
+  defaultReportType?: string;
 }
 
 interface OutputData {
@@ -26,7 +27,11 @@ interface WebSocketMessage {
   output: string | OutputData;
 }
 
-export default function ChatBox({ chatBoxSettings, setChatBoxSettings }: ChatBoxProps) {
+export default function ChatBox({ 
+  chatBoxSettings, 
+  setChatBoxSettings,
+  defaultReportType = 'research'
+}: ChatBoxProps) {
 
   const [agentLogs, setAgentLogs] = useState<any[]>([]);
   const [report, setReport] = useState("");
@@ -71,6 +76,7 @@ export default function ChatBox({ chatBoxSettings, setChatBoxSettings }: ChatBox
         <ResearchForm 
           chatBoxSettings={chatBoxSettings} 
           setChatBoxSettings={setChatBoxSettings}
+          defaultReportType={defaultReportType}
         />
 
         {agentLogs?.length > 0 ? <AgentLogs agentLogs={agentLogs} /> : ''}
