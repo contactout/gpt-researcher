@@ -20,7 +20,7 @@ const HumanFeedback: React.FC<HumanFeedbackProps> = ({ questionForHuman, websock
   };
 
   return (
-    <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+    <div className="bg-gray-100 p-4 rounded-lg">
       <h3 className="text-lg font-semibold mb-2">Human Feedback Required</h3>
       <p className="mb-4">{questionForHuman}</p>
       <form onSubmit={handleSubmit}>

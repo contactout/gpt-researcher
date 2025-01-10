@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 interface HeaderProps {
   loading?: boolean;
@@ -10,40 +9,18 @@ interface HeaderProps {
 }
 
 const Header = ({ loading, isStopped, showResult, onStop, onNewResearch }: HeaderProps) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50">
-      <div className="absolute inset-0 backdrop-blur-sm bg-gradient-to-b to-transparent"></div>
-      
-      <div className={`container relative px-4 lg:px-0 transition-all duration-300 ${
-        isScrolled ? 'h-[50px] pt-2 pb-2' : 'h-[60px] lg:h-[80px] pt-4 pb-4'
-      }`}>
-        <div className="flex flex-col items-center">
-          <a href="/">
-            <Image
-              src="/img/PaperPilot-Logo-Black.png"
-              alt="logo"
-              width={300}
-              height={60}
-              className={`transition-all duration-300 transform ${
-                isScrolled ? 'scale-50' : 'lg:h-14'
-              }`}
-            />
-          </a>
-          
-          <div className={`flex gap-2 transition-all duration-300 ${
-            isScrolled ? 'mt-1' : 'mt-2'
-          }`}>
+    <div className="sticky top-0 left-0 right-0 z-50 bg-white py-5">
+      <div className="absolute inset-x-0 bottom-0 h-px bg-slate-900/5"></div>
+      <div className="flex lg:flex-1 container items-center flex flex-col">
+        <a href="/" className="-m-1.5 p-1.5">
+          <span className="sr-only">PaperPilot</span>
+          <Image className="h-8 w-auto" width={300} height={60} src="/img/PaperPilot-Logo-Black.png" alt="" />
+        </a>
+      </div>
+      <div className="flex flex-col items-center">
+          <div className={`flex gap-2 transition-all duration-300 mt-2`}>
             {loading && !isStopped && (
               <button
                 onClick={onStop}
@@ -62,7 +39,6 @@ const Header = ({ loading, isStopped, showResult, onStop, onNewResearch }: Heade
             )}
           </div>
         </div>
-      </div>
     </div>
   );
 };
