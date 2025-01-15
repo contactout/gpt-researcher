@@ -15,11 +15,11 @@ const Question: React.FC<QuestionProps> = ({ question }) => {
           height={24}
           className="w-6 h-6"
         />
-        <p className="font-bold uppercase leading-[152%] text-white">
+        <p className="font-bold uppercase leading-[152%] text-gray-500">
           Research Task:
         </p><br/>
       </div>
-      <div className="grow text-white break-words max-w-full log-message">&quot;{question}&quot;</div>
+      <div className="grow text-gray-500 break-words max-w-full log-message">&quot;{question}&quot;</div>
     </div>
   );
 };
